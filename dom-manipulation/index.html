@@ -1,83 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dynamic Quote Generator</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dynamic Quote Generator — Persistent</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f4f9;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 30px;
-    }
-
-    h1 {
-      margin-bottom: 20px;
-    }
-
-    #quoteDisplay {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      min-height: 80px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-      width: 60%;
-      transition: all 0.3s ease;
-    }
-
-    #controls {
-      margin-bottom: 20px;
-    }
-
-    button {
-      padding: 10px 20px;
-      border: none;
-      background: #007bff;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-      margin: 5px;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #0056b3;
-    }
-
-    input {
-      padding: 8px;
-      margin: 5px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    select {
-      padding: 8px;
-      margin: 5px;
-      border-radius: 6px;
-    }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background:#f4f4f9; color:#222; display:flex; flex-direction:column; align-items:center; padding:24px; }
+    h1 { margin-bottom:12px; }
+    #quoteDisplay { width:70%; min-height:80px; background:#fff; padding:18px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06); text-align:center; margin-bottom:14px; }
+    #controls, #storageControls { margin-bottom:12px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:center; }
+    button, input[type="file"] { padding:8px 12px; border-radius:6px; border:1px solid #d0d6df; background:#fff; cursor:pointer; }
+    input[type="text"] { padding:8px 10px; border-radius:6px; border:1px solid #d0d6df; }
+    select { padding:8px 10px; border-radius:6px; border:1px solid #d0d6df; }
+    small { display:block; margin-top:8px; color:#555; }
   </style>
 </head>
 <body>
-  <h1>Dynamic Quote Generator</h1>
-
+  <h1>Dynamic Quote Generator — Persistent</h1>
   <div id="controls">
-    <select id="categoryFilter">
-      <option value="all">All Categories</option>
-    </select>
+    <select id="categoryFilter"><option value="all">All Categories</option></select>
     <button id="newQuote">Show New Quote</button>
+    <button id="showLast">Show Last Viewed (session)</button>
   </div>
-
-  <div id="quoteDisplay">Click “Show New Quote” to begin!</div>
-
+  <div id="quoteDisplay">Click "Show New Quote" to begin.</div>
   <div id="addQuoteForm"></div>
-
+  <div id="storageControls">
+    <button id="exportJson">Export Quotes (JSON)</button>
+    <input type="file" id="importFile" accept=".json" />
+    <button id="clearStorage">Clear Local Storage</button>
+  </div>
+  <small id="status"></small>
   <script src="script.js"></script>
 </body>
 </html>
